@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1350.0" style="-fx-background-image: url('/Images/Background.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DndController">
+   <children>
+      <ImageView fx:id="charImageView" fitHeight="300.0" fitWidth="300.0" layoutX="87.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="enemyImageView" fitHeight="300.0" fitWidth="300.0" layoutX="1004.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+      <ComboBox fx:id="charComboBox" accessibleHelp="&quot;Select a character&quot;" layoutX="87.0" layoutY="355.0" prefHeight="30.0" prefWidth="240.0" promptText="-- Select your character --" />
+      <ComboBox fx:id="enemyComboBox" accessibleHelp="&quot;Select an enemy&quot;" layoutX="1004.0" layoutY="355.0" prefHeight="30.0" prefWidth="240.0" promptText="-- Select your enemy --" />
+      <Label fx:id="charHealthLabel" layoutX="87.0" layoutY="401.0" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: white;" text="Health">
+         <font>
+            <Font name="Garamond" size="24.0" />
+         </font></Label>
+      <Label fx:id="charAttackLabel" layoutX="87.0" layoutY="443.0" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: white;" text="Attack Dmg">
+         <font>
+            <Font name="Garamond" size="24.0" />
+         </font></Label>
+      <Label fx:id="charACLabel" layoutX="87.0" layoutY="488.0" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: white;" text="Armor Class">
+         <font>
+            <Font name="Garamond" size="24.0" />
+         </font></Label>
+      <Label fx:id="enemyHealthLabel" layoutX="1004.0" layoutY="401.0" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: white;" text="Health">
+         <font>
+            <Font name="Garamond" size="24.0" />
+         </font></Label>
+      <Label fx:id="enemyAttackLabel" layoutX="1004.0" layoutY="443.0" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: white;" text="Attack Dmg">
+         <font>
+            <Font name="Garamond" size="24.0" />
+         </font></Label>
+      <Label fx:id="enemyACLabel" layoutX="1004.0" layoutY="488.0" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: white;" text="Armor Class">
+         <font>
+            <Font name="Garamond" size="24.0" />
+         </font></Label>
+      <Label fx:id="charHealthValue" alignment="CENTER" contentDisplay="CENTER" layoutX="207.0" layoutY="401.0" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: white;" text="0">
+         <font>
+            <Font name="Garamond Bold" size="24.0" />
+         </font></Label>
+      <Label fx:id="charAttackValue" alignment="CENTER" layoutX="207.0" layoutY="443.0" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: white;" text="0">
+         <font>
+            <Font name="Garamond Bold" size="24.0" />
+         </font></Label>
+      <Label fx:id="charACValue" alignment="CENTER" layoutX="207.0" layoutY="488.0" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: white;" text="0">
+         <font>
+            <Font name="Garamond Bold" size="24.0" />
+         </font></Label>
+      <Label fx:id="enemyHealthValue" alignment="CENTER" layoutX="1124.0" layoutY="401.0" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: white;" text="0">
+         <font>
+            <Font name="Garamond Bold" size="24.0" />
+         </font></Label>
+      <Label fx:id="enemyAttackValue" alignment="CENTER" layoutX="1124.0" layoutY="443.0" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: white;" text="0">
+         <font>
+            <Font name="Garamond Bold" size="24.0" />
+         </font></Label>
+      <Label fx:id="enemyACValue" alignment="CENTER" layoutX="1124.0" layoutY="488.0" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: white;" text="0">
+         <font>
+            <Font name="Garamond Bold" size="24.0" />
+         </font></Label>
+      <Button fx:id="newGameButton" layoutX="615.0" layoutY="40.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" text="New Game">
+         <font>
+            <Font name="Garamond Bold" size="18.0" />
+         </font></Button>
+      <Button fx:id="healButton" layoutX="615.0" layoutY="255.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" text="Heal">
+         <font>
+            <Font name="Garamond Bold" size="18.0" />
+         </font></Button>
+      <Button fx:id="attackButton" layoutX="615.0" layoutY="201.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" text="Attack">
+         <font>
+            <Font name="Garamond Bold" size="18.0" />
+         </font></Button>
+      <Button fx:id="gameStartButton" layoutX="615.0" layoutY="101.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" text="Game Start">
+         <font>
+            <Font name="Garamond Bold" size="18.0" />
+         </font></Button>
+      <Button fx:id="spellButton" layoutX="570.0" layoutY="312.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="210.0" text="Spell">
+         <font>
+            <Font name="Garamond Bold" size="18.0" />
+         </font>
+      </Button>
+      <TextArea fx:id="gameRulesTextArea" layoutX="405.0" layoutY="368.0" prefHeight="300.0" prefWidth="540.0" style="-fx-control-inner-background: rgba(0, 0, 0, 0.8); -fx-text-fill: white; -fx-background-color: rgba(0, 0, 0, 0.2); -fx-opacity: 0.9">
+         <font>
+            <Font name="Garamond Italic" size="19.0" />
+         </font>
+      </TextArea>
+   </children>
+</AnchorPane>

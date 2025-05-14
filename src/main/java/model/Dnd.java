@@ -1,0 +1,61 @@
+package model;
+
+import java.util.Random;
+
+public class Dnd {
+
+    private static Random random;
+
+    // Constructor that allows injecting a Random instance
+    public static void setRandom(Random random) {
+        Dnd.random = random;
+    }
+
+    public static class AttackResult {
+        private final boolean hit;
+        private final int damage;
+        private final int roll;
+
+        public AttackResult(boolean hit, int damage, int roll) {
+            this.hit = hit;
+            this.damage = damage;
+            this.roll = roll;
+        }
+
+        public boolean isHit() {
+            return hit;
+        }
+
+        public int getDamage() {
+            return damage;
+        }
+
+        public int getRoll() {
+            return roll;
+        }
+    }
+
+    public static AttackResult characterAttack(Characters character, Enemies enemy, int roll) {
+        int threshold = enemy.getAc() / 2;
+
+        if (roll > threshold) {
+            int damage = character.getDmg() / 2;
+            enemy.setCurrentHp(Math.max(enemy.getCurrentHp() - damage, 0));
+            return new AttackResult(true, damage, roll);
+        }
+
+        return new AttackResult(false, 0, roll);
+    }
+
+    public static AttackResult enemyAttack(Enemies enemy, Characters character, int roll) {
+        int threshold = character.getAc() / 2;
+
+        if (roll > threshold) {
+            int damage = enemy.getDmg() / 2;
+            character.setCurrentHp(Math.max(character.getCurrentHp() - damage, 0));
+            return new AttackResult(true, damage, roll);
+        }
+
+        return new AttackResult(false, 0, roll);
+    }
+}
