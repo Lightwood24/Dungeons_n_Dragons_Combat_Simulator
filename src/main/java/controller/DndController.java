@@ -66,6 +66,7 @@ public class DndController {
                    There is a chance you may miss your attack!
                 4. Use 'Heal' once per battle to restore 20 HP.
                 5. Use your hero's spell once per battle to get an advantage on the battlefield.
+                   Your spell will weaken the enemy, but it won't be enough to defeat it.
                    Beware — your foe will strike back!
                 6. Battle ends when your champion or your foe falls.
                 
