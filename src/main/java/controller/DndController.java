@@ -14,68 +14,49 @@ import java.util.List;
 import java.util.Random;
 
 public class DndController {
+    // Flags to track if player has used their heal or spell
     private boolean hasHealed = false;
     private boolean hasCastSpell = false;
     private final Random random = new Random();
 
+    // FXML UI elements
+    @FXML private Button gameStartButton;
+    @FXML private Button newGameButton;
+    @FXML private Button attackButton;
+    @FXML private Button healButton;
+    @FXML private Button spellButton;
 
-    @FXML
-    private Button gameStartButton;
-    @FXML
-    private Button newGameButton;
-    @FXML
-    private Button attackButton;
-    @FXML
-    private Button healButton;
-    @FXML
-    private Button spellButton;
+    @FXML private Label charHealthValue;
+    @FXML private Label charAttackValue;
+    @FXML private Label charACValue;
+    @FXML private Label enemyHealthValue;
+    @FXML private Label enemyAttackValue;
+    @FXML private Label enemyACValue;
 
-    @FXML
-    private Label charHealthValue;
-    @FXML
-    private Label charAttackValue;
-    @FXML
-    private Label charACValue;
-    @FXML
-    private Label enemyHealthValue;
-    @FXML
-    private Label enemyAttackValue;
-    @FXML
-    private Label enemyACValue;
+    @FXML private Label charHealthLabel;
+    @FXML private Label charAttackLabel;
+    @FXML private Label charACLabel;
+    @FXML private Label enemyHealthLabel;
+    @FXML private Label enemyAttackLabel;
+    @FXML private Label enemyACLabel;
 
-    @FXML
-    private Label charHealthLabel;
-    @FXML
-    private Label charAttackLabel;
-    @FXML
-    private Label charACLabel;
-    @FXML
-    private Label enemyHealthLabel;
-    @FXML
-    private Label enemyAttackLabel;
-    @FXML
-    private Label enemyACLabel;
+    @FXML private ImageView charImageView;
+    @FXML private ImageView enemyImageView;
 
-    @FXML
-    private ImageView charImageView;
-    @FXML
-    private ImageView enemyImageView;
+    @FXML private ComboBox<Characters> charComboBox;
+    @FXML private ComboBox<Enemies> enemyComboBox;
 
-    @FXML
-    private ComboBox<Characters> charComboBox;
-    @FXML
-    private ComboBox<Enemies> enemyComboBox;
+    @FXML private TextArea gameRulesTextArea;
 
-    @FXML
-    private TextArea gameRulesTextArea;
-
+    // Lists to hold character and enemy options
     private final List<Characters> characters = new ArrayList<>();
     private final List<Enemies> enemies = new ArrayList<>();
 
-
+    // Method called when the FXML UI is initialized
     public void initialize() {
-        gameRulesTextArea.setDisable(true);
+        gameRulesTextArea.setDisable(true); // Make game rules text area read-only
 
+        // Define game rules text
         String gameRules = """
                 Here are the rules of the battle:
                 
@@ -90,30 +71,33 @@ public class DndController {
                 
                 May the dice roll in your favor.""";
 
-        gameRulesTextArea.setText(gameRules);
+        gameRulesTextArea.setText(gameRules); // Display rules in the UI
 
-
+        // Disable gameplay buttons until game starts
         attackButton.setDisable(true);
         healButton.setDisable(true);
         spellButton.setDisable(true);
 
+        // Add characters with different stats and spells
         characters.add(new Characters("Fighter", 42, 42, 18, 17, "/Images/Fighter.png", new Spells.IntimidatingScream()));
         characters.add(new Characters("Paladin", 42, 42, 16, 20, "/Images/Paladin.png", new Spells.Smite()));
-        characters.add(new Characters("Ranger", 42,42, 16, 18, "/Images/Ranger.png", new Spells.AcidArrow()));
-        characters.add(new Characters("Rogue", 36,  36,20, 16, "/Images/Rogue.png", new Spells.BackStab()));
+        characters.add(new Characters("Ranger", 42, 42, 16, 18, "/Images/Ranger.png", new Spells.AcidArrow()));
+        characters.add(new Characters("Rogue", 36, 36, 20, 16, "/Images/Rogue.png", new Spells.BackStab()));
         characters.add(new Characters("Cleric", 36, 36, 20, 16, "/Images/Cleric.png", new Spells.HealingLight()));
-        characters.add(new Characters("Sorcerer", 30, 30,22, 15, "/Images/Sorcerer.png", new Spells.ConcentratedMagic()));
+        characters.add(new Characters("Sorcerer", 30, 30, 22, 15, "/Images/Sorcerer.png", new Spells.ConcentratedMagic()));
 
+        // Add enemy options
         enemies.add(new Enemies("Sahuagin", 38, 38, 17, 15, "/Images/Sahuagin.png"));
         enemies.add(new Enemies("Goliath", 60, 60, 15, 18, "/Images/Goliath.png"));
         enemies.add(new Enemies("Tiefling Charmer", 24, 24, 18, 16, "/Images/TieflingCharmer.png"));
 
+        // Populate combo boxes
         charComboBox.getItems().addAll(characters);
         enemyComboBox.getItems().addAll(enemies);
-
         charComboBox.getSelectionModel().selectFirst();
         enemyComboBox.getSelectionModel().selectFirst();
 
+        // Update character UI when selected
         charComboBox.setOnAction(event -> {
             Characters selectedCharacter = charComboBox.getSelectionModel().getSelectedItem();
             if (selectedCharacter != null) {
@@ -125,6 +109,7 @@ public class DndController {
             }
         });
 
+        // Update enemy UI when selected
         enemyComboBox.setOnAction(event -> {
             Enemies selectedEnemy = enemyComboBox.getSelectionModel().getSelectedItem();
             if (selectedEnemy != null) {
@@ -135,9 +120,11 @@ public class DndController {
             }
         });
 
+        // Manually trigger initial UI updates
         charComboBox.getOnAction().handle(null);
         enemyComboBox.getOnAction().handle(null);
 
+        // Start game button logic
         gameStartButton.setOnAction(event -> {
             charComboBox.setDisable(true);
             enemyComboBox.setDisable(true);
@@ -147,6 +134,7 @@ public class DndController {
             gameStartButton.setDisable(true);
         });
 
+        // New game logic: reset state and UI
         newGameButton.setOnAction(event -> {
             hasHealed = false;
             hasCastSpell = false;
@@ -169,7 +157,7 @@ public class DndController {
             }
         });
 
-        // Healing logic
+        // Healing logic - only allowed once per game
         healButton.setOnAction(event -> {
             Characters selectedCharacter = charComboBox.getSelectionModel().getSelectedItem();
             if (selectedCharacter != null && !hasHealed) {
@@ -185,6 +173,7 @@ public class DndController {
                 healButton.setDisable(true);
             }
 
+            // Healing message
             Alert healAlert = new Alert(Alert.AlertType.INFORMATION);
             healAlert.setTitle("Healing results");
             healAlert.setHeaderText("You've healed 20 HP");
@@ -192,15 +181,17 @@ public class DndController {
             healAlert.showAndWait();
         });
 
-        //Spell Logic
+        // Spell casting logic - only allowed once per game
         spellButton.setOnAction(event -> {
             Characters selectedCharacter = charComboBox.getSelectionModel().getSelectedItem();
             Enemies selectedEnemy = enemyComboBox.getSelectionModel().getSelectedItem();
 
             if (selectedCharacter != null && selectedEnemy != null) {
+                // Apply spell effect
                 Spells spell = selectedCharacter.getSpell();
                 spell.cast(selectedCharacter, selectedEnemy);
 
+                // Update UI
                 enemyHealthValue.setText(String.valueOf(selectedEnemy.getCurrentHp()));
                 enemyAttackValue.setText(String.valueOf(selectedEnemy.getDmg()));
                 enemyACValue.setText(String.valueOf(selectedEnemy.getAc()));
@@ -208,6 +199,7 @@ public class DndController {
                 charAttackValue.setText(String.valueOf(selectedCharacter.getDmg()));
                 charACValue.setText(String.valueOf(selectedCharacter.getAc()));
 
+                // Show spell result alert
                 Alert spellAlert = new Alert(Alert.AlertType.INFORMATION);
                 spellAlert.setTitle("Spell Results");
                 spellAlert.setHeaderText("Spell Cast!");
@@ -224,13 +216,13 @@ public class DndController {
                 spellAlert.showAndWait();
             }
 
+            // Enemy counterattack after spell
             assert selectedCharacter != null;
-            int roll = random.nextInt(20) + 1; // Simulate enemy's roll
-
-            // Call the enemyAttack method with the generated roll
+            int roll = random.nextInt(20) + 1;
             Dnd.AttackResult enemyResult = Dnd.enemyAttack(selectedEnemy, selectedCharacter, roll);
             charHealthValue.setText(String.valueOf(selectedCharacter.getCurrentHp()));
 
+            // Show enemy attack result
             StringBuilder enemyAttackMessage = new StringBuilder();
             enemyAttackMessage.append(selectedEnemy.getName()).append(" rolled: ").append(enemyResult.getRoll()).append("\n");
             if (enemyResult.isHit()) {
@@ -249,19 +241,18 @@ public class DndController {
             spellButton.setDisable(true);
         });
 
-// Attack logic
+        // Main attack logic - player and then enemy
         attackButton.setOnAction(event -> {
             Characters selectedCharacter = charComboBox.getSelectionModel().getSelectedItem();
             Enemies selectedEnemy = enemyComboBox.getSelectionModel().getSelectedItem();
 
             if (selectedCharacter != null && selectedEnemy != null) {
-                // Generate the roll outside the function
-                int roll = random.nextInt(20) + 1; // Simulate rolling a 20-sided die
-
-                // Call the characterAttack method with the generated roll
+                // Player attack
+                int roll = random.nextInt(20) + 1;
                 Dnd.AttackResult charResult = Dnd.characterAttack(selectedCharacter, selectedEnemy, roll);
                 enemyHealthValue.setText(String.valueOf(selectedEnemy.getCurrentHp()));
 
+                // Message for player's action
                 StringBuilder alertMessage = new StringBuilder();
                 alertMessage.append(selectedCharacter.getName()).append(" rolled: ").append(charResult.getRoll()).append("\n");
                 if (charResult.isHit()) {
@@ -270,11 +261,9 @@ public class DndController {
                     alertMessage.append("Missed!\n\n");
                 }
 
+                // Enemy counterattack if still alive
                 if (selectedEnemy.getCurrentHp() > 0) {
-                    // Generate the enemy's roll outside the function
-                    roll = random.nextInt(20) + 1; // Simulate enemy's roll
-
-                    // Call the enemyAttack method with the generated roll
+                    roll = random.nextInt(20) + 1;
                     Dnd.AttackResult enemyResult = Dnd.enemyAttack(selectedEnemy, selectedCharacter, roll);
                     charHealthValue.setText(String.valueOf(selectedCharacter.getCurrentHp()));
 
@@ -286,12 +275,14 @@ public class DndController {
                     }
                 }
 
+                // Determine outcome of battle
                 if (selectedEnemy.getCurrentHp() <= 0) {
                     alertMessage.append("\nVictory! You defeated the ").append(selectedEnemy.getName()).append("!");
                 } else if (selectedCharacter.getCurrentHp() <= 0) {
                     alertMessage.append("\nDefeat... You were slain by the ").append(selectedEnemy.getName()).append(".");
                 }
 
+                // Show result of the round
                 Alert battleAlert = new Alert(Alert.AlertType.INFORMATION);
                 battleAlert.setTitle("Battle Results");
                 battleAlert.setHeaderText("Combat Summary");
@@ -299,7 +290,5 @@ public class DndController {
                 battleAlert.showAndWait();
             }
         });
-
     }
-
 }

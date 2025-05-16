@@ -1,6 +1,8 @@
 package model;
 
+// This class represents an enemy in the game, with basic combat attributes
 public class Enemies {
+
     private String name;
     private int maxHp;
     private int currentHp;
@@ -66,6 +68,7 @@ public class Enemies {
         this.imagePath = imagePath;
     }
 
+    // Override toString so that the enemy's name will be shown in ComboBox
     @Override
     public String toString() {
         return name;

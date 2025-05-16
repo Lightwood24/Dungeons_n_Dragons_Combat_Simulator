@@ -1,6 +1,8 @@
 package model;
 
+// This class represents a game character with various stats and a spell
 public class Characters {
+
     private String name;
     private int maxHp;
     private int currentHp;
@@ -75,6 +77,7 @@ public class Characters {
         this.imagePath = imagePath;
     }
 
+    // Override toString so that the character's name will be shown in ComboBox
     @Override
     public String toString() {
         return name;

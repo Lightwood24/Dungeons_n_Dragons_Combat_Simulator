@@ -2,15 +2,17 @@ package model;
 
 import java.util.Random;
 
+// Utility class for DnD-style combat logic
 public class Dnd {
 
-    private static Random random;
+    private static Random random; // Shared Random instance for generating rolls
 
-    // Constructor that allows injecting a Random instance
+    // Sets the random generator (for testing)
     public static void setRandom(Random random) {
         Dnd.random = random;
     }
 
+    // Inner class representing the result of an attack
     public static class AttackResult {
         private final boolean hit;
         private final int damage;
@@ -35,6 +37,7 @@ public class Dnd {
         }
     }
 
+    // Character attacks enemy using given roll
     public static AttackResult characterAttack(Characters character, Enemies enemy, int roll) {
         int threshold = enemy.getAc() / 2;
 
@@ -47,6 +50,7 @@ public class Dnd {
         return new AttackResult(false, 0, roll);
     }
 
+    // Enemy attacks character using given roll
     public static AttackResult enemyAttack(Enemies enemy, Characters character, int roll) {
         int threshold = character.getAc() / 2;
 
