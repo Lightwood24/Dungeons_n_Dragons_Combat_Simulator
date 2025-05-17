@@ -3,7 +3,6 @@ package model;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 
-// This class represents a game character with various stats and a spell
 @Data
 @AllArgsConstructor
 public class Characters {

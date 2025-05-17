@@ -2,7 +2,6 @@ package model;
 
 import lombok.Getter;
 
-// The base Spells class represents a magical ability or special action
 @Getter
 public class Spells {
     private final String name;  // Name of the spell
@@ -11,7 +10,6 @@ public class Spells {
         this.name = name;
     }
 
-    // Defines what happens when the spell is cast
     // This method will be overridden by subclasses
     public void cast(Characters caster, Enemies target) {}
 

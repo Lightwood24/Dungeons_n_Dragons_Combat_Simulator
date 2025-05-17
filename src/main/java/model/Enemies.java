@@ -3,7 +3,6 @@ package model;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 
-// This class represents an enemy in the game, with basic combat attributes
 @Data
 @AllArgsConstructor
 public class Enemies {
