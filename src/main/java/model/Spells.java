@@ -2,7 +2,7 @@ package model;
 
 // The base Spells class represents a magical ability or special action
 public class Spells {
-    private String name;  // Name of the spell
+    private final String name;  // Name of the spell
 
     public Spells(String name) {
         this.name = name;
@@ -14,11 +14,7 @@ public class Spells {
 
     // Defines what happens when the spell is cast
     // This method will be overridden by subclasses
-    public void cast(Characters caster, Enemies target) {
-        // Default implementation: does nothing
-    }
-
-    // --------- Subclasses for Specific Spells ---------
+    public void cast(Characters caster, Enemies target) {}
 
     // Spell 1: Reduces enemy's armor class (AC) by 4
     public static class IntimidatingScream extends Spells {

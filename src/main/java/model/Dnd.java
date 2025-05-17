@@ -5,9 +5,9 @@ import java.util.Random;
 // Utility class for DnD-style combat logic
 public class Dnd {
 
-    private static Random random; // Shared Random instance for generating rolls
+    private static Random random;
 
-    // Sets the random generator (for testing)
+    // Sets the random generator for testing
     public static void setRandom(Random random) {
         Dnd.random = random;
     }
@@ -20,7 +20,7 @@ public class Dnd {
 
         public AttackResult(boolean hit, int damage, int roll) {
             this.hit = hit;
-            this.damage = damage;
+                                                                                                                                                                                                                                                                                                                                                                                                                                this.damage = damage;
             this.roll = roll;
         }
 

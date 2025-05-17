@@ -14,50 +14,27 @@ import java.util.List;
 import java.util.Random;
 
 public class DndController {
-    // Flags to track if player has used their heal or spell
-    private boolean hasHealed = false;
-    private boolean hasCastSpell = false;
-    private final Random random = new Random();
 
-    // FXML UI elements
     @FXML private Button gameStartButton;
     @FXML private Button newGameButton;
     @FXML private Button attackButton;
     @FXML private Button healButton;
     @FXML private Button spellButton;
-
     @FXML private Label charHealthValue;
     @FXML private Label charAttackValue;
     @FXML private Label charACValue;
     @FXML private Label enemyHealthValue;
     @FXML private Label enemyAttackValue;
     @FXML private Label enemyACValue;
-
-    @FXML private Label charHealthLabel;
-    @FXML private Label charAttackLabel;
-    @FXML private Label charACLabel;
-    @FXML private Label enemyHealthLabel;
-    @FXML private Label enemyAttackLabel;
-    @FXML private Label enemyACLabel;
-
     @FXML private ImageView charImageView;
     @FXML private ImageView enemyImageView;
-
     @FXML private ComboBox<Characters> charComboBox;
     @FXML private ComboBox<Enemies> enemyComboBox;
-
     @FXML private TextArea gameRulesTextArea;
 
-    // Lists to hold character and enemy options
     private final List<Characters> characters = new ArrayList<>();
     private final List<Enemies> enemies = new ArrayList<>();
-
-    // Method called when the FXML UI is initialized
-    public void initialize() {
-        gameRulesTextArea.setDisable(true); // Make game rules text area read-only
-
-        // Define game rules text
-        String gameRules = """
+    String gameRules = """
                 Here are the rules of the battle:
                 
                 1. Choose your hero and a foe worthy of your steel.
@@ -72,14 +49,20 @@ public class DndController {
                 
                 May the dice roll in your favor.""";
 
-        gameRulesTextArea.setText(gameRules); // Display rules in the UI
+    // Flags to track if player has used their heal or spell
+    private boolean hasHealed = false;
+    private boolean hasCastSpell = false;
+    private final Random random = new Random();
+
+    public void initialize() {
+        gameRulesTextArea.setDisable(true); // Make game rules text area read-only
+        gameRulesTextArea.setText(gameRules);
 
         // Disable gameplay buttons until game starts
         attackButton.setDisable(true);
         healButton.setDisable(true);
         spellButton.setDisable(true);
 
-        // Add characters with different stats and spells
         characters.add(new Characters("Fighter", 42, 42, 18, 17, "/Images/Fighter.png", new Spells.IntimidatingScream()));
         characters.add(new Characters("Paladin", 42, 42, 16, 20, "/Images/Paladin.png", new Spells.Smite()));
         characters.add(new Characters("Ranger", 42, 42, 16, 18, "/Images/Ranger.png", new Spells.AcidArrow()));
@@ -87,7 +70,6 @@ public class DndController {
         characters.add(new Characters("Cleric", 36, 36, 20, 16, "/Images/Cleric.png", new Spells.HealingLight()));
         characters.add(new Characters("Sorcerer", 30, 30, 22, 15, "/Images/Sorcerer.png", new Spells.ConcentratedMagic()));
 
-        // Add enemy options
         enemies.add(new Enemies("Sahuagin", 38, 38, 17, 15, "/Images/Sahuagin.png"));
         enemies.add(new Enemies("Goliath", 60, 60, 15, 18, "/Images/Goliath.png"));
         enemies.add(new Enemies("Tiefling Charmer", 24, 24, 18, 16, "/Images/TieflingCharmer.png"));
@@ -174,7 +156,6 @@ public class DndController {
                 healButton.setDisable(true);
             }
 
-            // Healing message
             Alert healAlert = new Alert(Alert.AlertType.INFORMATION);
             healAlert.setTitle("Healing results");
             healAlert.setHeaderText("You've healed 20 HP");
@@ -200,7 +181,6 @@ public class DndController {
                 charAttackValue.setText(String.valueOf(selectedCharacter.getDmg()));
                 charACValue.setText(String.valueOf(selectedCharacter.getAc()));
 
-                // Show spell result alert
                 Alert spellAlert = new Alert(Alert.AlertType.INFORMATION);
                 spellAlert.setTitle("Spell Results");
                 spellAlert.setHeaderText("Spell Cast!");
@@ -223,7 +203,6 @@ public class DndController {
             Dnd.AttackResult enemyResult = Dnd.enemyAttack(selectedEnemy, selectedCharacter, roll);
             charHealthValue.setText(String.valueOf(selectedCharacter.getCurrentHp()));
 
-            // Show enemy attack result
             StringBuilder enemyAttackMessage = new StringBuilder();
             enemyAttackMessage.append(selectedEnemy.getName()).append(" rolled: ").append(enemyResult.getRoll()).append("\n");
             if (enemyResult.isHit()) {
@@ -253,7 +232,6 @@ public class DndController {
                 Dnd.AttackResult charResult = Dnd.characterAttack(selectedCharacter, selectedEnemy, roll);
                 enemyHealthValue.setText(String.valueOf(selectedEnemy.getCurrentHp()));
 
-                // Message for player's action
                 StringBuilder alertMessage = new StringBuilder();
                 alertMessage.append(selectedCharacter.getName()).append(" rolled: ").append(charResult.getRoll()).append("\n");
                 if (charResult.isHit()) {
@@ -283,7 +261,6 @@ public class DndController {
                     alertMessage.append("\nDefeat... You were slain by the ").append(selectedEnemy.getName()).append(".");
                 }
 
-                // Show result of the round
                 Alert battleAlert = new Alert(Alert.AlertType.INFORMATION);
                 battleAlert.setTitle("Battle Results");
                 battleAlert.setHeaderText("Combat Summary");
