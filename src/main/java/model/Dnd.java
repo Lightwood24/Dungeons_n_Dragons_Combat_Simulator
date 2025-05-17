@@ -1,5 +1,6 @@
 package model;
 
+import lombok.Getter;
 import java.util.Random;
 
 // Utility class for DnD-style combat logic
@@ -13,6 +14,7 @@ public class Dnd {
     }
 
     // Inner class representing the result of an attack
+    @Getter
     public static class AttackResult {
         private final boolean hit;
         private final int damage;
@@ -20,21 +22,10 @@ public class Dnd {
 
         public AttackResult(boolean hit, int damage, int roll) {
             this.hit = hit;
-                                                                                                                                                                                                                                                                                                                                                                                                                                this.damage = damage;
+            this.damage = damage;
             this.roll = roll;
         }
 
-        public boolean isHit() {
-            return hit;
-        }
-
-        public int getDamage() {
-            return damage;
-        }
-
-        public int getRoll() {
-            return roll;
-        }
     }
 
     // Character attacks enemy using given roll

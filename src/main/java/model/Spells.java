@@ -1,15 +1,14 @@
 package model;
 
+import lombok.Getter;
+
 // The base Spells class represents a magical ability or special action
+@Getter
 public class Spells {
     private final String name;  // Name of the spell
 
     public Spells(String name) {
         this.name = name;
-    }
-
-    public String getName() {
-        return name;
     }
 
     // Defines what happens when the spell is cast
