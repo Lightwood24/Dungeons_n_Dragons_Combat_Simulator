@@ -40,23 +40,22 @@ public class DndController {
     private boolean hasHealed = false;
     private boolean hasCastSpell = false;
 
-    private final String gameRules = """
-            Here are the rules of the battle:
-            
-            1. Choose your hero and a foe worthy of your steel.
-            2. Click 'Start Game' to commence your duel.
-            3. Use 'Attack' to strike your enemy. Beware — they will strike back!
-               There is a chance you may miss your attack!
-            4. Use 'Heal' once per battle to restore 20 HP.
-            5. Use your hero's spell once per battle to get an advantage on the battlefield.
-               Your spell will weaken the enemy, but it won't be enough to defeat it.
-               Beware — your foe will strike back!
-            6. Battle ends when your champion or your foe falls.
-            
-            May the dice roll in your favor.""";
-
     public void initialize() {
         gameRulesTextArea.setDisable(true);
+        String gameRules = """
+                Here are the rules of the battle:
+                
+                1. Choose your hero and a foe worthy of your steel.
+                2. Click 'Start Game' to commence your duel.
+                3. Use 'Attack' to strike your enemy. Beware — they will strike back!
+                   There is a chance you may miss your attack!
+                4. Use 'Heal' once per battle to restore 20 HP.
+                5. Use your hero's spell once per battle to get an advantage on the battlefield.
+                   Your spell will weaken the enemy, but it won't be enough to defeat it.
+                   Beware — your foe will strike back!
+                6. Battle ends when your champion or your foe falls.
+                
+                May the dice roll in your favor.""";
         gameRulesTextArea.setText(gameRules);
 
         attackButton.setDisable(true);
