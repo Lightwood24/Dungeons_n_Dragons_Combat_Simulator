@@ -5,7 +5,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Characters;
-import model.Dnd;
+import model.BattleLogic;
 import model.Enemies;
 import model.Spells;
 
@@ -187,7 +187,7 @@ public class DndController {
 
         if (selectedCharacter != null && selectedEnemy != null) {
             int roll = random.nextInt(20) + 1;
-            Dnd.AttackResult charResult = Dnd.characterAttack(selectedCharacter, selectedEnemy, roll);
+            BattleLogic.AttackResult charResult = BattleLogic.characterAttack(selectedCharacter, selectedEnemy, roll);
             enemyHealthValue.setText(String.valueOf(selectedEnemy.getCurrentHp()));
 
             StringBuilder alertMessage = new StringBuilder();
@@ -226,7 +226,7 @@ public class DndController {
 
     private void handleEnemyCounterattack(Characters selectedCharacter, Enemies selectedEnemy) {
         int roll = random.nextInt(20) + 1;
-        Dnd.AttackResult enemyResult = Dnd.enemyAttack(selectedEnemy, selectedCharacter, roll);
+        BattleLogic.AttackResult enemyResult = BattleLogic.enemyAttack(selectedEnemy, selectedCharacter, roll);
         charHealthValue.setText(String.valueOf(selectedCharacter.getCurrentHp()));
 
         StringBuilder enemyAttackMessage = new StringBuilder();
