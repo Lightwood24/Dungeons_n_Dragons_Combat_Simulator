@@ -11,6 +11,7 @@ import model.Spells;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 public class DndController {
@@ -87,7 +88,7 @@ public class DndController {
                 charHealthValue.setText(String.valueOf(selectedCharacter.getCurrentHp()));
                 charAttackValue.setText(String.valueOf(selectedCharacter.getDmg()));
                 charACValue.setText(String.valueOf(selectedCharacter.getAc()));
-                charImageView.setImage(new Image(getClass().getResource(selectedCharacter.getImagePath()).toExternalForm()));
+                charImageView.setImage(new Image(Objects.requireNonNull(getClass().getResource(selectedCharacter.getImagePath())).toExternalForm()));
                 spellButton.setText(selectedCharacter.getSpell().getName());
             }
         });
@@ -99,7 +100,7 @@ public class DndController {
                 enemyHealthValue.setText(String.valueOf(selectedEnemy.getCurrentHp()));
                 enemyAttackValue.setText(String.valueOf(selectedEnemy.getDmg()));
                 enemyACValue.setText(String.valueOf(selectedEnemy.getAc()));
-                enemyImageView.setImage(new Image(getClass().getResource(selectedEnemy.getImagePath()).toExternalForm()));
+                enemyImageView.setImage(new Image(Objects.requireNonNull(getClass().getResource(selectedEnemy.getImagePath())).toExternalForm()));
             }
         });
 
@@ -204,6 +205,7 @@ public class DndController {
             charHealthValue.setText(String.valueOf(selectedCharacter.getCurrentHp()));
 
             StringBuilder enemyAttackMessage = new StringBuilder();
+            assert selectedEnemy != null;
             enemyAttackMessage.append(selectedEnemy.getName()).append(" rolled: ").append(enemyResult.getRoll()).append("\n");
             if (enemyResult.isHit()) {
                 enemyAttackMessage.append("Hit! Dealt ").append(enemyResult.getDamage()).append(" damage.\n");
@@ -272,6 +274,12 @@ public class DndController {
                     alertMessage.append("\nVictory! You defeated the ").append(selectedEnemy.getName()).append("!");
                 } else if (selectedCharacter.getCurrentHp() <= 0) {
                     alertMessage.append("\nDefeat... You were slain by the ").append(selectedEnemy.getName()).append(".");
+                }
+
+                if (selectedEnemy.getCurrentHp() <= 0 || selectedCharacter.getCurrentHp() <= 0) {
+                    attackButton.setDisable(true);
+                    spellButton.setDisable(true);
+                    healButton.setDisable(true);
                 }
 
                 Alert battleAlert = new Alert(Alert.AlertType.INFORMATION);
