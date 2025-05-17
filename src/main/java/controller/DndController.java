@@ -217,6 +217,19 @@ public class DndController {
             enemyAttackAlert.setContentText(enemyAttackMessage.toString());
             enemyAttackAlert.showAndWait();
 
+            if (selectedCharacter.getCurrentHp() <= 0) {
+                Alert deathAlert = new Alert(Alert.AlertType.INFORMATION);
+                deathAlert.setTitle("You Died");
+                deathAlert.setHeaderText("Defeat...");
+                deathAlert.setContentText("You were slain by the " + selectedEnemy.getName() + " during their counterattack.");
+                deathAlert.showAndWait();
+
+                // Disable further actions
+                attackButton.setDisable(true);
+                spellButton.setDisable(true);
+                healButton.setDisable(true);
+            }
+
             hasCastSpell = true;
             spellButton.setDisable(true);
         });
