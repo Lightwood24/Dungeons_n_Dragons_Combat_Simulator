@@ -46,7 +46,7 @@ This project is a turn-based combat game inspired by Dungeons & Dragons mechanic
 mvn clean javafx:run
 ```
 
-Alternatively, you can run the project directly from your IDE by executing the `Main` class.
+Alternatively, you can run the project directly from your IDE by executing the [`Main`](src/main/java/Main.java) class.
 
 ## 🎮 How to Play
 
@@ -54,25 +54,25 @@ Alternatively, you can run the project directly from your IDE by executing the `
 2. Select an enemy to battle
 3. Click "Game Start" to begin the combat
 4. Use the following actions during your turn:
-   - **⚔️ Attack**: Attempt a basic attack against the enemy
-   - **❤️ Heal**: Restore 20 HP (can only be used once per battle)
-   - **✨ Spell**: Cast your character's unique ability (can only be used once per battle)
+  - **⚔️ Attack**: Attempt a basic attack against the enemy
+  - **❤️ Heal**: Restore 20 HP (can only be used once per battle)
+  - **✨ Spell**: Cast your character's unique ability (can only be used once per battle)
 5. Combat continues until either you or your enemy is defeated
 
 ## 📁 Project Structure
 
-- `src/main/java`
-  - `model/`: Game logic classes
-    - `src/main/java/model/Characters.java`: Character data and mechanics
-    - `src/main/java/model/Enemies.java`: Enemy data and mechanics
-    - `src/main/java/model/Dnd.java`: Core game mechanics and combat system
-    - `src/main/java/model/Spells.java`: Special ability implementations
-  - `controller/`: UI controllers
-    - `src/main/java/controller/DndController.java`: Main game controller
-  - `src/main/java/DndApplication.java`: JavaFX application entry point
-  - `src/main/java/Main.java`: Program entry point
+- [`src/main/java`](src/main/java)
+  - [`model/`](src/main/java/model): Game logic classes
+    - [`src/main/java/model/Characters.java`](src/main/java/model/Characters.java): Character data and mechanics
+    - [`src/main/java/model/Enemies.java`](src/main/java/model/Enemies.java): Enemy data and mechanics
+    - [`src/main/java/model/BattleLogic.java`](src/main/java/model/BattleLogic.java): Core game mechanics and combat system
+    - [`src/main/java/model/Spells.java`](src/main/java/model/Spells.java): Special ability implementations
+  - [`controller/`](src/main/java/controller): UI controllers
+    - [`src/main/java/controller/DndController.java`](src/main/java/controller/DndController.java): Main game controller
+  - [`src/main/java/DndApplication.java`](src/main/java/DndApplication.java): JavaFX application entry point
+  - [`src/main/java/Main.java`](src/main/java/Main.java): Program entry point
 
-- `src/main/resources`
+- [`src/main/resources`](src/main/resources)
   - `FXML/`: UI layout files
   - `Images/`: Character and enemy images
 
@@ -83,10 +83,11 @@ Alternatively, you can run the project directly from your IDE by executing the `
 - FXML
 - Maven
 - JUnit 5
+- Lombok
 
 ## 🧪 Testing
 
-The project includes unit tests for the combat mechanics in the `src/test/java/model/DndTests.java` file. Run the tests using:
+The project includes unit tests for the combat mechanics in the [`src/test/java/model/BattleLogicTests.java`](src/test/java/model/BattleLogicTests.java) file. Run the tests using:
 
 ```bash
 mvn test
