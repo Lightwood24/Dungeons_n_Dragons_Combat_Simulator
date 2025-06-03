@@ -8,6 +8,7 @@ import model.Characters;
 import model.BattleLogic;
 import model.Enemies;
 import model.Spells;
+import util.DataLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,16 +63,8 @@ public class DndController {
         healButton.setDisable(true);
         spellButton.setDisable(true);
 
-        characters.add(new Characters("Fighter", 42, 42, 18, 17, "/Images/Fighter.png", new Spells.IntimidatingScream()));
-        characters.add(new Characters("Paladin", 42, 42, 16, 20, "/Images/Paladin.png", new Spells.Smite()));
-        characters.add(new Characters("Ranger", 42, 42, 16, 18, "/Images/Ranger.png", new Spells.AcidArrow()));
-        characters.add(new Characters("Rogue", 36, 36, 20, 16, "/Images/Rogue.png", new Spells.BackStab()));
-        characters.add(new Characters("Cleric", 36, 36, 20, 16, "/Images/Cleric.png", new Spells.HealingLight()));
-        characters.add(new Characters("Sorcerer", 30, 30, 22, 15, "/Images/Sorcerer.png", new Spells.ConcentratedMagic()));
-
-        enemies.add(new Enemies("Sahuagin", 38, 38, 17, 15, "/Images/Sahuagin.png"));
-        enemies.add(new Enemies("Goliath", 60, 60, 15, 18, "/Images/Goliath.png"));
-        enemies.add(new Enemies("Tiefling Charmer", 24, 24, 18, 16, "/Images/TieflingCharmer.png"));
+        characters.addAll(DataLoader.loadCharacters());
+        enemies.addAll(DataLoader.loadEnemies());
 
         charComboBox.getItems().addAll(characters);
         enemyComboBox.getItems().addAll(enemies);

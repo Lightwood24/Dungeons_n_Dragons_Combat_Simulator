@@ -99,4 +99,16 @@ public class Spells {
             caster.setDmg(newDmg);  // Increases character's damage
         }
     }
+
+    public static Spells getByName(String name) {
+        return switch (name) {
+            case "IntimidatingScream" -> new IntimidatingScream();
+            case "Smite" -> new Smite();
+            case "AcidArrow" -> new AcidArrow();
+            case "BackStab" -> new BackStab();
+            case "HealingLight" -> new HealingLight();
+            case "ConcentratedMagic" -> new ConcentratedMagic();
+            default -> null;
+        };
+    }
 }

@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Fighter",
+    "maxHp": 42,
+    "currentHp": 42,
+    "dmg": 18,
+    "ac": 17,
+    "imagePath": "/Images/Fighter.png",
+    "spell": "IntimidatingScream"
+  },
+  {
+    "name": "Paladin",
+    "maxHp": 42,
+    "currentHp": 42,
+    "dmg": 16,
+    "ac": 20,
+    "imagePath": "/Images/Paladin.png",
+    "spell": "Smite"
+  },
+  {
+    "name": "Ranger",
+    "maxHp": 42,
+    "currentHp": 42,
+    "dmg": 16,
+    "ac": 18,
+    "imagePath": "/Images/Ranger.png",
+    "spell": "AcidArrow"
+  },
+  {
+    "name": "Rogue",
+    "maxHp": 36,
+    "currentHp": 36,
+    "dmg": 20,
+    "ac": 16,
+    "imagePath": "/Images/Rogue.png",
+    "spell": "BackStab"
+  },
+  {
+    "name": "Cleric",
+    "maxHp": 36,
+    "currentHp": 36,
+    "dmg": 20,
+    "ac": 16,
+    "imagePath": "/Images/Cleric.png",
+    "spell": "HealingLight"
+  },
+  {
+    "name": "Sorcerer",
+    "maxHp": 30,
+    "currentHp": 30,
+    "dmg": 22,
+    "ac": 15,
+    "imagePath": "/Images/Sorcerer.png",
+    "spell": "ConcentratedMagic"
+  }
+]

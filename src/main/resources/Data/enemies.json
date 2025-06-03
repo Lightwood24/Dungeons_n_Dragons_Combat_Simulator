@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Sahuagin",
+    "maxHp": 38,
+    "currentHp": 38,
+    "dmg": 17,
+    "ac": 15,
+    "imagePath": "/Images/Sahuagin.png"
+  },
+  {
+    "name": "Goliath",
+    "maxHp": 60,
+    "currentHp": 60,
+    "dmg": 15,
+    "ac": 18,
+    "imagePath": "/Images/Goliath.png"
+  },
+  {
+    "name": "Tiefling Charmer",
+    "maxHp": 24,
+    "currentHp": 24,
+    "dmg": 18,
+    "ac": 16,
+    "imagePath": "/Images/TieflingCharmer.png"
+  }
+]
