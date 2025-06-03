@@ -40,13 +40,7 @@ This project is a turn-based combat game inspired by Dungeons & Dragons mechanic
 1. Ensure you have Java 19 or later installed
 2. Ensure you have Maven installed
 3. Clone the repository
-4. Run the following command:
-
-```bash
-mvn clean javafx:run
-```
-
-Alternatively, you can run the project directly from your IDE by executing the [`Main`](src/main/java/Main.java) class.
+4. You can run the project directly from your IDE by executing the [`Main`](src/main/java/Main.java) class.
 
 ## 🎮 How to Play
 
