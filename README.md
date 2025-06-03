@@ -62,19 +62,22 @@ Alternatively, you can run the project directly from your IDE by executing the [
 ## 📁 Project Structure
 
 - [`src/main/java`](src/main/java)
+  - [`controller/`](src/main/java/controller): UI controllers
+    - [`src/main/java/controller/DndController.java`](src/main/java/controller/DndController.java): Main game controller
   - [`model/`](src/main/java/model): Game logic classes
     - [`src/main/java/model/Characters.java`](src/main/java/model/Characters.java): Character data and mechanics
     - [`src/main/java/model/Enemies.java`](src/main/java/model/Enemies.java): Enemy data and mechanics
     - [`src/main/java/model/BattleLogic.java`](src/main/java/model/BattleLogic.java): Core game mechanics and combat system
     - [`src/main/java/model/Spells.java`](src/main/java/model/Spells.java): Special ability implementations
-  - [`controller/`](src/main/java/controller): UI controllers
-    - [`src/main/java/controller/DndController.java`](src/main/java/controller/DndController.java): Main game controller
+  - [`util/`](src/main/java/util): Utility classes
+    - [`src/main/java/util/DataLoader.java`](src/main/java/util/DataLoader.java): Loads character and enemy data from JSON files
   - [`src/main/java/DndApplication.java`](src/main/java/DndApplication.java): JavaFX application entry point
   - [`src/main/java/Main.java`](src/main/java/Main.java): Program entry point
 
 - [`src/main/resources`](src/main/resources)
   - `FXML/`: UI layout files
   - `Images/`: Character and enemy images
+  - `Data/`: JSON data files for characters and enemies
 
 ## 🛠️ Technologies Used
 
@@ -84,6 +87,7 @@ Alternatively, you can run the project directly from your IDE by executing the [
 - Maven
 - JUnit 5
 - Lombok
+- Jackson (JSON parsing)
 
 ## 🧪 Testing
 
